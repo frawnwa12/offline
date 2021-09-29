@@ -61,7 +61,7 @@ token = database:get(id_server..":token"),
 SUDO = database:get(id_server..":SUDO:ID"),
 UserName = database:get(id_server..":SUDO:USERNAME"),
  }
-create(config, "./offline.lua")   
+create(config, "./AZIZAlua")   
 end 
 create_config_auto()
 token = database:get(id_server..":token")
@@ -83,7 +83,7 @@ exit 1
 fi
 if [ ! $token ]; then
 echo "╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸ ╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸ ┉ ┉"
-echo -e "\e[1;36mTOKEN IS NOT FIND IN FILE offline.lua \e[0m"
+echo -e "\e[1;36mTOKEN IS NOT FIND IN FILE AZIZAlua \e[0m"
 echo "╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉"
 exit 1
 fi
@@ -120,7 +120,7 @@ file:write(serialized)
 file:close() 
 end 
 local load_redis = function()  
-local f = io.open("./offline.lua", "r")  
+local f = io.open("./AZIZAlua", "r")  
 if not f then   
 AutoSet()  
 else   
@@ -128,7 +128,7 @@ f:close()
 database:del(id_server..":token")
 database:del(id_server..":SUDO:ID")
 end  
-local config = loadfile("./offline.lua")() 
+local config = loadfile("./AZIZAlua")() 
 return config 
 end 
 _redis = load_redis()  
@@ -146,7 +146,7 @@ print([[
 ────────────────────
 > CH › @source_frawn
 ]])
-sudos = dofile("./offline.lua") 
+sudos = dofile("./AZIZAlua") 
 SUDO = tonumber(sudos.SUDO)
 sudo_users = {SUDO}
 bot_id = sudos.token:match("(%d+)")  
@@ -157,7 +157,7 @@ io.popen("mkdir File_Bot")
 io.popen("cd File_Bot && rm -rf commands.lua.1") 
 io.popen("cd File_Bot && rm -rf commands.lua.2") 
 io.popen("cd File_Bot && rm -rf commands.lua.3") 
-io.popen("cd File_Bot && wget https://raw.githubusercontent.com/frawnwa12/offline/main/File_Bot/commands.lua") 
+io.popen("cd File_Bot && wget https://raw.ggithub.com/frawnwa12/offline/main/File_Bot/commands.lua") 
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -1216,7 +1216,7 @@ end
 
 if text == 'تحديث السورس ' and DevSoFi(msg) then 
 os.execute('rm -rf DRAGON.lua')
-os.execute('wget https://raw.githubusercontent.com/frawnwa12/offline/main/DRAGON.lua')
+os.execute('wget https://raw.ggithub.com/frawnwa12/offline/main/DRAGON.lua')
 send(msg.chat_id_, msg.id_,'⋆ تم تحديث السورس')
 dofile('DRAGON.lua')  
 end
@@ -2720,9 +2720,9 @@ end
 return false
 end
 os.execute('rm -rf DRAGON.lua')
-os.execute('wget https://raw.githubusercontent.com/frawnwa12/offline/main/DRAGON.lua')
-os.execute('wget https://raw.githubusercontent.com/frawnwa12/offline/main/library')
-os.execute('wget https://raw.githubusercontent.com/frawnwa12/offline/main/File_Bot')
+os.execute('wget https://raw.ggithub.com/frawnwa12/offline/main/DRAGON.lua')
+os.execute('wget https://raw.ggithub.com/frawnwa12/offline/main/library')
+os.execute('wget https://raw.ggithub.com/frawnwa12/offline/main/File_Bot')
 send(msg.chat_id_, msg.id_,'⋆ تم تحديث السورس')
 dofile('DRAGON.lua')  
 end
@@ -5142,7 +5142,7 @@ send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
 if DevSoFi(msg) then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/frawnwa12/offline/main/getfile.json")
+local Get_Files, res = https.request("https://raw.ggithub.com/frawnwa12/offline/main/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -5180,7 +5180,7 @@ t = "⋆ الملف ⤌ "..file.."\n⋆ تم تعطيل ملف \n"
 else
 t = "⋆ بالتاكيد تم تعطيل ملف → "..file.."\n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/frawnwa12/offline/main/File_Bot/"..file)
+local json_file, res = https.request("https://raw.ggithub.com/frawnwa12/offline/main/File_Bot/"..file)
 if res == 200 then
 os.execute("rm -fr File_Bot/"..file)
 send(msg.chat_id_, msg.id_,t) 
@@ -5200,7 +5200,7 @@ t = "⋆ بالتاكيد تم تفعيل ملف → "..file.." \n"
 else
 t = "⋆ الملف ⤌ "..file.."\n⋆ تم تفعيل ملف \n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/frawnwa12/offline/main/File_Bot/"..file)
+local json_file, res = https.request("https://raw.ggithub.com/frawnwa12/offline/main/File_Bot/"..file)
 if res == 200 then
 local chek = io.open("File_Bot/"..file,'w+')
 chek:write(json_file)
